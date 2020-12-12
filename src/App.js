@@ -3,7 +3,8 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
+import CampaignSetup from './pages/campaignSetup/campaignSetup';
+import advertiserProfile from './pages/advertiserProfile/advertiserProfile';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Private from './pages/Private';
@@ -20,8 +21,9 @@ class App extends Component {
         <Navbar />
 
         <Switch>
-          <Route exact path="/" component={Home} />
-
+          <PrivateRoute exact path="/" component={CampaignSetup} />
+          
+          <PrivateRoute exact path="/advertiser" component={advertiserProfile} />
 
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/login" component={Login} />
