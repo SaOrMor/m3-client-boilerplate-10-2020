@@ -10,7 +10,18 @@ class CampaignSetup extends Component {
     firstname: '',
     lastname: '',
     companyname: '',
-    campaignname: ''
+    campaignname: '',
+    startingdate: '',
+    endingdate: '',
+    budget: '',
+    image: '',
+    age: '',
+    gender: '',
+    country: '',
+    interests: '', 
+    operatingsystem: '', 
+    education: '', 
+    jobfunction: ''
   }
   
 
@@ -23,12 +34,12 @@ class CampaignSetup extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
 
-    const {firstname, lastname, companyname, campaignname } = this.state;
+    const {firstname, lastname, companyname, campaignname, startingdate, endingdate, budget, image, age, gender, country, interests, operatingsystem, education, jobfunction } = this.state;
 
-    axios.post("http://localhost:5000/api/campaign", { firstname, lastname, companyname, campaignname })
+    axios.post(`http://localhost:5000/api/campaign/${this.props.user._id}`, { firstname, lastname, companyname, campaignname, startingdate, endingdate, budget, image, age, gender, country, interests, operatingsystem, education, jobfunction })
 
     .then( () => {
-      this.setState({ firstname: '', lastname: '', companyname: '', campaignname: '' });
+      this.setState({ firstname: '', lastname: '', companyname: '', campaignname: '', startingdate: '', endingdate: '', budget: '', image: '', age: '', gender: '', country: '', interests: '', operatingsystem: '', education: '', jobfunction: '' });
     })
     .catch( (err) => console.log(err) )
   }

@@ -21,9 +21,9 @@ class App extends Component {
         <Navbar />
 
         <Switch>
-          <PrivateRoute exact path="/" component={CampaignSetup} />
+          <PrivateRoute exact path="/campaignSetup" component={CampaignSetup} />
           
-          <PrivateRoute exact path="/advertiser" component={advertiserProfile} />
+          <PrivateRoute exact path="/campaign/advertiser" component={advertiserProfile} />
 
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/login" component={Login} />
