@@ -3,8 +3,9 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
-import CampaignSetup from './pages/campaignSetup/campaignSetup';
-import advertiserProfile from './pages/advertiserProfile/advertiserProfile';
+import CampaignSetup from './pages/campaignSetup/CampaignSetup';
+import AdvertiserProfile from './pages/advertiserProfile/AdvertiserProfile';
+import Statistics from './pages/statistics/Statistics';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Private from './pages/Private';
@@ -23,7 +24,9 @@ class App extends Component {
         <Switch>
           <PrivateRoute exact path="/campaignSetup" component={CampaignSetup} />
           
-          <PrivateRoute exact path="/campaign/advertiser" component={advertiserProfile} />
+          <PrivateRoute exact path="/campaign/advertiser" component={AdvertiserProfile} />
+
+          <PrivateRoute exact path="/campaign/statistics/:id" component={Statistics} />
 
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/login" component={Login} />

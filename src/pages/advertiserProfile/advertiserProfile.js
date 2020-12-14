@@ -3,15 +3,19 @@ import axios from 'axios';
 import {withAuth} from '../../context/auth-context';
 import {Link} from 'react-router-dom';
 
- class advertiserProfile extends Component {
+ class AdvertiserProfile extends Component {
     
     state = {
         user: {}
     }    
-    componentDidMount (){axios.get(`http://localhost:5000/api/users/${this.props.user._id}`)
+    componentDidMount (){
+        console.log("object", this.props.user._id )
+        axios
+        .get(`http://localhost:5000/api/users/${this.props.user._id}`)
     .then( (response) => {
         console.log("ciao", response.data)
     this.setState({ user: response.data})
+    
     })
     .catch( (err) => console.log(err));
 }
@@ -21,10 +25,10 @@ import {Link} from 'react-router-dom';
         return (
             <div>
             <h2> Your campaigns: </h2>
-                {this.state.user.campaigns.map((campaigns) => {
+                {this.state.user.campaigns && this.state.user.campaigns.map((campaigns) => {
                     return(
                         <div key={campaigns._id}>
-                            <Link to={'/statistics/' + campaigns._id}>
+                            <Link to={'/campaign/statistics/' + campaigns._id}>
                                 <h2>{campaigns.campaignname}</h2>
                             </Link>
                         </div>
@@ -39,4 +43,4 @@ import {Link} from 'react-router-dom';
 }
 
 
-export default withAuth(advertiserProfile);
+export default withAuth(AdvertiserProfile);
