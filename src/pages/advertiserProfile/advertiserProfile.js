@@ -31,6 +31,7 @@ import {Link} from 'react-router-dom';
                             <Link to={'/campaign/statistics/' + campaigns._id}>
                                 <h2>{campaigns.campaignname}</h2>
                             </Link>
+                            <Link to={'/campaign/edit/' + campaigns._id}> Edit campaign</Link>
                         </div>
                     )
                 })

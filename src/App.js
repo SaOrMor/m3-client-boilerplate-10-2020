@@ -12,6 +12,7 @@ import Private from './pages/Private';
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
+import EditCampaign from './pages/editCampaign/EditCampaign';
 
 
 
@@ -25,6 +26,8 @@ class App extends Component {
           <PrivateRoute exact path="/campaignSetup" component={CampaignSetup} />
           
           <PrivateRoute exact path="/campaign/advertiser" component={AdvertiserProfile} />
+
+          <PrivateRoute exact path="/campaign/edit/:id" component={EditCampaign} />
 
           <PrivateRoute exact path="/campaign/statistics/:id" component={Statistics} />
 
