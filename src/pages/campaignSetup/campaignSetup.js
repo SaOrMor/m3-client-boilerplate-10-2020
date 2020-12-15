@@ -36,7 +36,8 @@ class CampaignSetup extends Component {
 
     const {firstname, lastname, companyname, campaignname, startingdate, endingdate, budget, image, age, gender, country, interests, operatingsystem, education, jobfunction } = this.state;
 
-    axios.post(`http://localhost:5000/api/campaign/${this.props.user._id}`, { firstname, lastname, companyname, campaignname, startingdate, endingdate, budget, image, age, gender, country, interests, operatingsystem, education, jobfunction })
+    axios.post(
+      `${process.env.REACT_APP_API_URL}/api/campaign/${this.props.user._id}`, { firstname, lastname, companyname, campaignname, startingdate, endingdate, budget, image, age, gender, country, interests, operatingsystem, education, jobfunction })
 
     .then( () => {
       this.setState({ firstname: '', lastname: '', companyname: '', campaignname: '', startingdate: '', endingdate: '', budget: '', image: '', age: '', gender: '', country: '', interests: '', operatingsystem: '', education: '', jobfunction: '' });

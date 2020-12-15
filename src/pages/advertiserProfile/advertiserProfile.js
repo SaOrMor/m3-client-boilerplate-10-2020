@@ -10,8 +10,8 @@ import {Link} from 'react-router-dom';
     }    
     componentDidMount (){
         console.log("object", this.props.user._id )
-        axios
-        .get(`http://localhost:5000/api/users/${this.props.user._id}`)
+        axios.get(
+            `${process.env.REACT_APP_API_URL}/api/users/${this.props.user._id}`)
     .then( (response) => {
         console.log("ciao", response.data)
     this.setState({ user: response.data})

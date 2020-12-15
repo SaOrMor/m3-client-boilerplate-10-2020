@@ -13,7 +13,8 @@ class Statistics extends Component {
         const campaignId = this.props.match.params.id;
         console.log(campaignId);
         axios
-        .get(`http://localhost:5000/api/campaign/statistics/${campaignId}`)
+        .get(
+        `${process.env.REACT_APP_API_URL}/api/campaign/statistics/${campaignId}`)
         .then( (response) => {
         console.log("response data from axios request", response.data)
     this.setState({ campaigns: response.data})
@@ -24,7 +25,8 @@ class Statistics extends Component {
 
     deleteCampaign = () => {const { id } = this.props.match.params;
 
-    axios.delete(`http://localhost:5000/api/campaign/deletecampaign/${id}` )
+    axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/campaign/deletecampaign/${id}` )
     .then(() => this.props.history.push('/campaign/advertiser'))
     .catch((err) => console.log(err));
 }
