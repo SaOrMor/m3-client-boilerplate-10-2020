@@ -34,11 +34,20 @@ class EditCampaign extends Component {
       jobfunction,
     } = this.state;
 
-    console.log(this.state);
 
     const { id } = this.props.match.params;
-
-    axios.put(`${process.env.REACT_APP_API_URL}/campaign/edit/${id}`, {
+console.log(id,campaignname,
+  endingdate,
+  budjet,
+  image,
+  age,
+  gender,
+  country,
+  interests,
+  operatingsystem,
+  education,
+  jobfunction)
+    axios.post(`${process.env.REACT_APP_API_URL}/api/campaign/edit/${id}`, {
         campaignname,
         endingdate,
         budjet,
@@ -57,6 +66,15 @@ class EditCampaign extends Component {
       })
       .catch((err) => console.log(err));
   };
+
+
+  deleteCampaign = () => {const { id } = this.props.match.params;
+
+    axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/campaign/deletecampaign/${id}` )
+    .then(() => this.props.history.push('/campaign/advertiser'))
+    .catch((err) => console.log(err));
+}
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -156,6 +174,10 @@ class EditCampaign extends Component {
           />
 
           <button type="submit">Edit Campaign</button>
+
+          <button onClick = {this.deleteCampaign}>
+            Delete Campaign
+          </button>
         </form>
       </div>
     );

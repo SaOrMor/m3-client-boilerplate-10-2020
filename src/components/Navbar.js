@@ -8,11 +8,11 @@ class Navbar extends Component {
     return (
       <nav className="navbar">
         <Link to={'/'} id='home-btn'>
-          <h4>Home</h4>
+          <h4>Your Campaigns</h4>
         </Link>
         {this.props.isLoggedIn ? (
           <>
-            <p>username: {this.props.user && this.props.user.email}</p>
+            <p>Email: {this.props.user && this.props.user.email}</p>
             <button onClick={this.props.logout}>Logout</button>
           </>
         ) : (

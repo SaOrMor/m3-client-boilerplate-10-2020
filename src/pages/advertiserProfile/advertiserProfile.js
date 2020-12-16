@@ -9,11 +9,11 @@ import {Link} from 'react-router-dom';
         user: {}
     }    
     componentDidMount (){
-        console.log("object", this.props.user._id )
+        console.log("this.props.user._id", this.props.user._id )
         axios.get(
             `${process.env.REACT_APP_API_URL}/api/users/${this.props.user._id}`)
     .then( (response) => {
-        console.log("ciao", response.data)
+        console.log("response data axios get advertiser", response.data)
     this.setState({ user: response.data})
     
     })
@@ -27,16 +27,20 @@ import {Link} from 'react-router-dom';
             <h2> Your campaigns: </h2>
                 {this.state.user.campaigns && this.state.user.campaigns.map((campaigns) => {
                     return(
+                        
                         <div key={campaigns._id}>
                             <Link to={'/campaign/statistics/' + campaigns._id}>
                                 <h2>{campaigns.campaignname}</h2>
                             </Link>
                             <Link to={'/campaign/edit/' + campaigns._id}> Edit campaign</Link>
                         </div>
+                        
                     )
                 })
                 }
-
+                <Link to={'/campaignSetup'}>
+                            Create new Campaign
+                        </Link>
             </div>
         )
     }

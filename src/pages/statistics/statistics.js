@@ -52,7 +52,7 @@ class Statistics extends Component {
     <button> Your campaigns</button>
 </Link>
 
-<Link to={'/editCampaigns'}>
+<Link to={`/campaign/edit/${this.state.campaigns._id}`}>
     <button> Edit your campaign</button>
 </Link>
 
